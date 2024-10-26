@@ -14,10 +14,12 @@ import CreateListing from './pages/CreateListing'
 import EditListing from './pages/EditListing'
 import Listing from './pages/Listing'
 import Contact from './pages/Contact'
+import Widget from 'rasa-webchat';
 
 function App() {
   return (
     <>
+      
       <Router>
       <Navbar />
       
@@ -42,7 +44,17 @@ function App() {
         
       </Router>
 
+
+      <Widget
+      initPayload={"/greet"}
+      socketUrl={"http://localhost:5005"}
+      socketPath={"/socket.io/"}
+      customData={{"language": "en"}} // arbitrary custom data. Stay minimal as this will be added to the socket
+      title={"Windy Homes"}
+      />
+
       <ToastContainer />
+
     </>
   )
 }
